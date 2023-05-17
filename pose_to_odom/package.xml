@@ -1,0 +1,26 @@
+<package>
+    <name>pose_to_odom</name>
+    <version>1.0.0</version>
+    <description>
+        pose to odom
+    </description>
+    <maintainer email="y1seung@unist.ac.kr">Ilseung Yoon</maintainer>
+    <license>BSD</license>
+
+    <author>Ilseung Yoon</author>
+
+    <buildtool_depend>catkin</buildtool_depend>
+    <build_depend>roscpp</build_depend>
+    <run_depend>roscpp</run_depend>
+    <build_depend>std_msgs</build_depend>
+    <run_depend>std_msgs</run_depend>
+    <build_depend>geometry_msgs</build_depend>
+    <run_depend>geometry_msgs</run_depend>
+    <build_depend>sensor_msgs</build_depend>
+    <run_depend>sensor_msgs</run_depend>
+    <build_depend>nav_msgs</build_depend>
+    <run_depend>nav_msgs</run_depend>
+    <build_depend>cartographer_ros_msgs</build_depend>
+    <run_depend>cartographer_ros_msgs</run_depend>
+
+</package>
