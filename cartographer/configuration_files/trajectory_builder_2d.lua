@@ -15,9 +15,9 @@
 TRAJECTORY_BUILDER_2D = {
   use_imu_data = true,
   min_range = 0.,
-  max_range = 30.,
-  min_z = -0.8,
-  max_z = 2.0,
+  max_range = 50.,
+  min_z = -0.8, -- -0.2
+  max_z = 8.0,   -- 0.3
   missing_data_ray_length = 5.,
   num_accumulated_range_data = 1,
   voxel_filter_size = 0.025,
@@ -93,7 +93,7 @@ TRAJECTORY_BUILDER_2D = {
     range_data_inserter = {
       range_data_inserter_type = "PROBABILITY_GRID_INSERTER_2D",
       probability_grid_range_data_inserter = {
-        insert_free_space = false,
+        insert_free_space = true,
         hit_probability = 0.55,
         miss_probability = 0.49,
       },

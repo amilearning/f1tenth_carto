@@ -15,21 +15,24 @@
 -->
 
 <launch>
+  <arg name="my_namespace"  default="target" />
+
+
   <param name="robot_description"
     textfile="$(find cartographer_ros)/urdf/backpack_2d.urdf" />
 
-  <node name="robot_state_publisher" pkg="robot_state_publisher"
+  <node ns="$(arg my_namespace)" name="robot_state_publisher" pkg="robot_state_publisher"
     type="robot_state_publisher" />
 
-  <node name="cartographer_node" pkg="cartographer_ros"
+  <node ns="$(arg my_namespace)" name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
           -configuration_directory $(find cartographer_ros)/configuration_files
           -configuration_basename backpack_2d_localization.lua
-          -load_state_filename /home/ros2nx/carto_ws/install_isolated/share/cartographer_ros/configuration_files/map.pbstream"                               
-      output="screen">
+          -load_state_filename /home/hmcl/carto_ws/install_isolated/share/cartographer_ros/configuration_files/map.pbstream"                               
+      output="log">
     <remap from="echoes" to="scan" />
     <!-- <remap from="/imu" to="/imu/cf/data" /> -->
-    <remap from="/imu" to="/imu/data" />
+    <remap from="imu" to="imu/data" />
   </node>
   <!-- <node name="cartographer_node" pkg="cartographer_ros"
       type="cartographer_node" args="
@@ -43,15 +46,15 @@
     <!-- <remap from="/pf/pose/odom" to="/carto/odom"/> -->
   <!-- </node> -->
 
-  <node name="carto_init_pose" pkg="pose_to_odom" type="carto_init_pose" />
+  <node ns="$(arg my_namespace)" name="carto_init_pose" pkg="pose_to_odom" type="carto_init_pose" output="log"/>
 
-  <node name="scan_filter" pkg="pose_to_odom" type="scan_filter" />
+  <!-- <node name="scan_filter" pkg="pose_to_odom" type="scan_filter" /> -->
 
   <!-- <node name="carto_velocity" pkg="pose_to_odom" type="carto_velocity" /> -->
   
   <!-- <node name="track_velocity" pkg="pose_to_odom" type="track_velocity" />  -->
 
 
-  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+  <node ns="$(arg my_namespace)" name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" output="log"/>
 </launch>

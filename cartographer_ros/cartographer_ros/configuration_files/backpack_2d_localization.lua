@@ -21,10 +21,29 @@ MAP_BUILDER.num_background_threads = 6
 POSE_GRAPH.constraint_builder.sampling_ratio = 0.01
 POSE_GRAPH.optimize_every_n_nodes = 1
 POSE_GRAPH.global_sampling_ratio = 0.01
+TRAJECTORY_BUILDER_2D.min_z = -0.8
+TRAJECTORY_BUILDER_2D.max_z = 8.0
+TRAJECTORY_BUILDER_2D.max_range = 50.0
+
 -- KR
 -- POSE_GRAPH.optimization_problem.huber_scale = 1e3
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 1
-TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 2
+-- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 0.2
+-- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 10
+-- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 2
+-- TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 2
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight = 0.01
+TRAJECTORY_BUILDER_2D.ceres_scan_matcher.rotation_weight = 25 --25
+
+POSE_GRAPH.constraint_builder.loop_closure_translation_weight =  3e5 --3e5
+POSE_GRAPH.constraint_builder.loop_closure_rotation_weight = 1e6
+-- POSE_GRAPH.constraint_builder.max_constraint_distance = 5 -- 15
+POSE_GRAPH.constraint_builder.ceres_scan_matcher.translation_weight =  0.01 --10.
+POSE_GRAPH.constraint_builder.ceres_scan_matcher.rotation_weight =  25 --30 45 1.
+
+-- POSE_GRAPH.optimization_problem.local_slam_pose_translation_weight = 1e6
+-- POSE_GRAPH.optimization_problem.local_slam_pose_rotation_weight = 2e5
+
+
 return options
 
 
