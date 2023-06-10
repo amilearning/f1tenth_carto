@@ -29,7 +29,7 @@
           -configuration_basename backpack_2d.lua"
       output="screen">
     <remap from="echoes" to="scan" />
-    <remap from="/imu" to="imu/data" />
+    <remap from="imu" to="imu/data" />
   </node>
 
   <node ns="$(arg my_namespace)"  name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
